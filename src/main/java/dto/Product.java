@@ -7,7 +7,7 @@ public class Product {
 	private int pricce;
 	private String content;
 	private int stock;
-	public ProductDTO(int id, String name, String category, int pricce, String content, int stock) {
+	public Product(int id, String name, String category, int pricce, String content, int stock) {
 		super();
 		this.id = id;
 		this.name = name;
