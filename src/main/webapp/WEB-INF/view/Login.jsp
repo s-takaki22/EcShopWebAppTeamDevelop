@@ -13,8 +13,8 @@
 	%>
 		<p style="color:red">ログイン失敗</p>
 	<form action="LoginServlet" method="post">
-		【IDとPWを入力してください。】<br>
-		ログインID：<input type="text" name="mail" value="<%=request.getParameter("mail") %>"><br>
+		【メールアドレスとPWを入力してください。】<br>
+		メールアドレス：<input type="text" name="mail" value="<%=request.getParameter("mail") %>"><br>
 		PW：<input type="password" name="pw"><br>
 		<input type="submit" value="ログイン">
 	</form>
