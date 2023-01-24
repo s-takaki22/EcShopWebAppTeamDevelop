@@ -17,7 +17,7 @@ import util.GenerateHashedPw;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", account);
 			
-			String view = "WEB-INF/view/sample-menu.jsp";
+			String view = "WEB-INF/view/menu.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		}
