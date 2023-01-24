@@ -8,8 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% Product pr=(Product)session.getAttribute("input-product");%>
-<p><%=pr.getName()%></p>
-<p><%=pr.getCategory() %></p>
+	<% Product pr=(Product)session.getAttribute("input-product");%>
+	<p><%=pr.getName()%></p>
+	<p><%=pr.getCategory() %></p>
+	<p><%=pr.getPricce() %></p>
+	<p><%=pr.getContent()%></p>
+	<p><%=pr.getStock()%></p>
+	<form action="ProductRegisterExecuteServlet">
+	<input type="submit"value="登録">
+	</form>
 </body>
 </html>
