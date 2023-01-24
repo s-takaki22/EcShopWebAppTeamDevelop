@@ -58,7 +58,7 @@ public class AccountDAO {
 	
 	// ログイン処理
 		public static Account login(String mail, String hashedPw) {
-			String sql = "SELECT * FROM account WHERE mail = ? AND password = ?";
+			String sql = "SELECT * FROM team_account WHERE mail = ? AND password = ?";
 			
 			try (
 					Connection con = getConnection();
@@ -88,7 +88,7 @@ public class AccountDAO {
 		
 		// メールアドレスを元にソルトを取得
 		public static String getSalt(String mail) {
-			String sql = "SELECT salt FROM account WHERE mail = ?";
+			String sql = "SELECT salt FROM team_account WHERE mail = ?";
 			
 			try (
 					Connection con = getConnection();
