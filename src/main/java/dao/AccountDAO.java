@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dto.Account;
@@ -27,7 +28,6 @@ public class AccountDAO {
 
 		return DriverManager.getConnection(dbUrl, username, password);
 	}
-	
 	//会員登録
 	public static int registerAccuont(Account register) {
 		String sql = "INSERT INTO team_account VALUES(default, ?, ?, ?, ?)";
@@ -55,4 +55,59 @@ public class AccountDAO {
 		}
 		return result;
 	}
+	
+	// ログイン処理
+		public static Account login(String mail, String hashedPw) {
+			String sql = "SELECT * FROM account WHERE mail = ? AND password = ?";
+			
+			try (
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				pstmt.setString(1, mail);
+				pstmt.setString(2, hashedPw);
+
+				try (ResultSet rs = pstmt.executeQuery()){
+					
+					if(rs.next()) {
+						String id = rs.getString("id");
+						String name = rs.getString("name");
+						String salt = rs.getString("salt");
+						String createdAt = rs.getString("created_at");
+						
+						return new Account(id, name, mail, salt, null, null);
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+		
+		// メールアドレスを元にソルトを取得
+		public static String getSalt(String mail) {
+			String sql = "SELECT salt FROM account WHERE mail = ?";
+			
+			try (
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				pstmt.setString(1, mail);
+
+				try (ResultSet rs = pstmt.executeQuery()){
+					
+					if(rs.next()) {
+						String salt = rs.getString("salt");
+						return salt;
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 }
