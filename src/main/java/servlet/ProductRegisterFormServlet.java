@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.Account;
-import dto.Product;
 
 /**
  * Servlet implementation class ProductRegisterFormServlet
@@ -40,15 +39,7 @@ public class ProductRegisterFormServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
-		request.setCharacterEncoding("UTF-8");
-		String name=request.getParameter("name");
-		String category=request.getParameter("category");
-		int price =Integer.parseInt( request.getParameter("price"));
-		String content=request.getParameter("content");
-		int stock = Integer.parseInt( request.getParameter("stock"));
-		Product pr=new Product(-1, name, category, price, content, stock);
-		session.setAttribute("input-product", pr);
-		String view="WEB-INF/view/product-register-confirm.jsp";
+		String view="WEB-INF/view/product-register-form.jsp";
 		RequestDispatcher dispatcher=request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 		

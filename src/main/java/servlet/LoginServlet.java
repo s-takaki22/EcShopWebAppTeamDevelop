@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// 一致するユーザがいなければ、ログイン失敗
 		if(account == null) {
-			String view = "./?error=1";
+			String view = "Login.jsp?error=1";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		} else {

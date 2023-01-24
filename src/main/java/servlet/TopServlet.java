@@ -10,21 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.ProductDAO;
 import dto.Account;
-import dto.Product;
 
 /**
- * Servlet implementation class ProductRegisterExecuteServlet
+ * Servlet implementation class TopServlet
  */
-@WebServlet("/ProductRegisterExecuteServlet")
-public class ProductRegisterExecuteServlet extends HttpServlet {
+@WebServlet("/TopServlet")
+public class TopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductRegisterExecuteServlet() {
+    public TopServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,16 +39,8 @@ public class ProductRegisterExecuteServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
-		request.setCharacterEncoding("UTF-8");
-		Product pr=(Product)session.getAttribute("input-product");
-		int result=ProductDAO.registerproduct(pr);
-		String path="";
-		if(result==0) {
-			path="WEB-INF/view/product-register-form.jsp?error=1";
-		}else {
-			path="WEB-INF/view/product-register-succes.jsp";
-		}
-		RequestDispatcher dispatcher =request.getRequestDispatcher(path);
+		String view="WEB-INF/view/menu.jsp";
+		RequestDispatcher dispatcher=request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
 
