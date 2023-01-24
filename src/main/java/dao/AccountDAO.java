@@ -73,9 +73,8 @@ public class AccountDAO {
 						String id = rs.getString("id");
 						String name = rs.getString("name");
 						String salt = rs.getString("salt");
-						String createdAt = rs.getString("created_at");
 						
-						return new Account(id, name, mail, salt, null, null);
+						return new Account(id, name, mail, null, null,salt);
 					}
 				}
 			} catch (SQLException e) {
