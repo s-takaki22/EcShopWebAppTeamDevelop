@@ -12,7 +12,7 @@ import java.util.List;
 
 import dto.Product;
 
-public class GootsDAO {
+public class ProductDAO {
 
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 		try {
@@ -32,13 +32,13 @@ public class GootsDAO {
 	
 	
 	
-	public static List<Product> selectAllGoots() {
+	public static List<Product> selectAllTeam_product() {
 		
 		
 		// 返却用変数
 		List<Product> result = new ArrayList<>();
 
-		String sql = "SELECT * FROM goots";
+		String sql = "SELECT * FROM team_product";
 		
 		try (
 				Connection con = getConnection();

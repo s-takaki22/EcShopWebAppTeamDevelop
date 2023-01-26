@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.GootsDAO;
+import dao.ProductDAO;
 import dto.Account;
 import dto.Product;
 
 /**
- * Servlet implementation class GootsAll
+ * Servlet implementation class ProductAll
  */
-@WebServlet("/GootsAll")
-public class GootsAll extends HttpServlet {
+@WebServlet("/ProductAll")
+public class ProductAll extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GootsAll() {
+    public ProductAll() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,13 +48,13 @@ public class GootsAll extends HttpServlet {
 			return;
 		}
 		
-	List<Product> gootsList = GootsDAO.selectAllGoots();
+	List<Product> ProductList = ProductDAO.selectAllTeam_product();
 		
-		request.setAttribute("list", gootsList);
+		request.setAttribute("list", ProductList);
 
 		
 		// 正常な画面を表示
-		String view = "WEB-INF/view/gootsall.jsp";
+		String view = "WEB-INF/view/productall.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -63,7 +63,7 @@ public class GootsAll extends HttpServlet {
 	
 	
 	
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
