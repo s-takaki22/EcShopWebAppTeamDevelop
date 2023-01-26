@@ -47,11 +47,11 @@ public class ProductDAO {
 					int id = rs.getInt("id");
 					String name = rs.getString("name");
 					String category = rs.getString("category");
-					int pricce = rs.getInt("pricce"); 
+					int price = rs.getInt("price"); 
 					String content = rs.getString("content");
 					int stock = rs.getInt("stock");
 
-					Product employee = new Product(id, name, category, pricce, content,stock);
+					Product employee = new Product(id, name, category, price, content,stock);
 					
 					result.add(employee);
 				}
