@@ -43,9 +43,11 @@ public class ProductRegisterConfirmServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String name=request.getParameter("name");
 		String category=request.getParameter("category");
-		int price = Integer.parseInt( request.getParameter("price"));
+		String strprice=request.getParameter("price");
+		int price = Integer.parseInt( strprice);
 		String content=request.getParameter("content");
-		int stock=Integer.parseInt( request.getParameter("stock"));
+		String strstock=request.getParameter("stock");
+		int stock=Integer.parseInt(strstock);
 		Product pr=new Product(-1, name, category, price, content, stock);
 		session.setAttribute("input-product", pr);
 		String view="WEB-INF/view/product-register-confirm.jsp";

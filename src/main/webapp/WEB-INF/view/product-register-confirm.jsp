@@ -9,11 +9,11 @@
 </head>
 <body>
 	<% Product pr=(Product)session.getAttribute("input-product");%>
-	<p><%=pr.getName()%></p>
-	<p><%=pr.getCategory() %></p>
-	<p><%=pr.getPricce() %></p>
-	<p><%=pr.getContent()%></p>
-	<p><%=pr.getStock()%></p>
+	<p>商品名：<%=pr.getName()%></p>
+	<p>カテゴリ：<%=pr.getCategory() %></p>
+	<p>値段：<%=pr.getPricce() %></p>
+	<p>内容：<%=pr.getContent()%></p>
+	<p>在庫：<%=pr.getStock()%></p>
 	<form action="ProductRegisterExecuteServlet">
 	<input type="submit"value="登録">
 	</form>
