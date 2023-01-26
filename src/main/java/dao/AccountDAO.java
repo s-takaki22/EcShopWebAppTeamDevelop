@@ -58,7 +58,7 @@ public class AccountDAO {
 	
 	// ログイン処理
 		public static Account login(String mail, String hashedPw) {
-			String sql = "SELECT * FROM account WHERE mail = ? AND password = ?";
+			String sql = "SELECT * FROM team_account WHERE mail = ? AND password = ?";
 			
 			try (
 					Connection con = getConnection();
@@ -73,9 +73,8 @@ public class AccountDAO {
 						String id = rs.getString("id");
 						String name = rs.getString("name");
 						String salt = rs.getString("salt");
-						String createdAt = rs.getString("created_at");
 						
-						return new Account(id, name, mail, salt, null, null);
+						return new Account(id, name, mail, null, null,salt);
 					}
 				}
 			} catch (SQLException e) {
@@ -88,7 +87,7 @@ public class AccountDAO {
 		
 		// メールアドレスを元にソルトを取得
 		public static String getSalt(String mail) {
-			String sql = "SELECT salt FROM account WHERE mail = ?";
+			String sql = "SELECT salt FROM team_account WHERE mail = ?";
 			
 			try (
 					Connection con = getConnection();
