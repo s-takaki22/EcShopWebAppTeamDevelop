@@ -9,7 +9,7 @@
 <body>
 	<h1>メニュー画面</h1>
 	<a href="ProductRegisterFormServlet">商品登録</a>
+	<a href="ProductAll">商品一覧</a>
 	<a href="LogoutServlet">ログアウト</a>
-		
 </body>
 </html>
